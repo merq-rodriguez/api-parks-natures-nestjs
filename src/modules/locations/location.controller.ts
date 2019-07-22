@@ -22,6 +22,15 @@ export class LocationController {
     const park = await this.locationService.getParques();
     res.status(HttpStatus.OK).json(park);
   }
+  
+  @Get('getLagunas')
+  public async getLagunas(
+    @Request() req,
+    @Response() res
+  ) {
+    const lagunas = await this.locationService.getLagunas();
+    res.status(HttpStatus.OK).json(lagunas);
+  }
 
   @Get('getDepartaments')
   public async getDepartaments(

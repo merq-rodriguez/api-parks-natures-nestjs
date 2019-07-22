@@ -30,7 +30,7 @@ export class LocationService {
         FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
         FROM (SELECT 'Feature' As type
            , ST_AsGeoJSON(lg.geom)::json As geometry
-           , row_to_json((SELECT l FROM (SELECT nombre) As l
+           , row_to_json((SELECT l FROM (SELECT nombre, no_res_vi, area_res, categoría, región) As l
              )) As properties
           FROM parques As lg   ) As f )  As fc;`
       );
@@ -82,7 +82,7 @@ export class LocationService {
         FROM ( SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features
         FROM (SELECT 'Feature' As type
            , ST_AsGeoJSON(lg.geom)::json As geometry
-           , row_to_json((SELECT l FROM (SELECT nombrevolc) As l
+           , row_to_json((SELECT l FROM (SELECT nombrevolc, alturasobr, latitud, longitud) As l
              )) As properties
           FROM volcanes As lg   ) As f )  As fc;`
       );
